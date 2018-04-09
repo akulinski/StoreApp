@@ -19,6 +19,8 @@ public class Main extends Application {
 
     public static void main(String[] args)
     {
+        DbController db=new DbController();
+        db.printallTracks();
         launch(args);
     }
 }

@@ -15,10 +15,10 @@ import java.util.ResourceBundle;
 public class GUIController implements Initializable {
     @FXML
     private javafx.scene.control.ListView<String> listView;
-    private DbController controller=null;
+    private DbController dbcontroller=null;
 
     public GUIController(DbController controller) {
-        this.controller = controller;
+        this.dbcontroller = controller;
     }
 
     @Override
@@ -30,10 +30,13 @@ public class GUIController implements Initializable {
 
     public void PrintAllTRacks(ActionEvent actionEvent) {
 
-            controller.printallTracks();
+            dbcontroller.printallTracks();
 
             ObservableList<String> items = listView.getItems();
-            Iterator<String> it=controller.getTrackList().listIterator();
+
+            items.removeAll();
+
+            Iterator<String> it=dbcontroller.getTrackList().listIterator();
 
             while(it.hasNext())
             {

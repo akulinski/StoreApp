@@ -12,11 +12,20 @@ public class DbController {
         return TrackList;
     }
 
+
     private LinkedList<String> TrackList;
+
+    public LinkedList<String> getSongs() {
+        return songs;
+    }
+
+    private LinkedList<String> songs;
+
 
     DbController()
     {
         TrackList=new LinkedList<String>();
+        songs=new LinkedList<String>();
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:chinook.db");
@@ -49,6 +58,29 @@ public class DbController {
         }
 
 
+    }
+
+    public void getSongs(int value)
+    {
+
+        try{
+            String sql="SELECT * FROM tracks WHERE Milliseconds > ?";
+            PreparedStatement statment=connection.prepareStatement(sql);
+
+            statment.setInt(1,value);;
+            ResultSet resultSet=statment.executeQuery();
+
+            while(resultSet.next())
+            {
+                String name=resultSet.getString(2);
+                System.out.println(name);
+                songs.add(name);
+            }
+        }
+        catch (java.sql.SQLException ex)
+        {
+            ex.getErrorCode();
+        }
     }
 
 }

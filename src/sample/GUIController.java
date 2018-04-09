@@ -10,11 +10,17 @@ import javax.swing.text.html.ListView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class GUIController implements Initializable {
+
     @FXML
     private javafx.scene.control.ListView<String> listView;
+
+    @FXML
+    private javafx.scene.control.TextField miliseconds;
+
     private DbController dbcontroller=null;
 
     public GUIController(DbController controller) {
@@ -44,10 +50,24 @@ public class GUIController implements Initializable {
                 items.add(name);
                 listView.getItems().add(name);
             }
+    }
 
+    public void getSongs(ActionEvent actionEvent)
+    {
+        dbcontroller.getSongs(Integer.parseInt(miliseconds.getText()));
 
+        ObservableList<String> items = listView.getItems();
 
+        items.removeAll();
 
+        Iterator<String> it=dbcontroller.getSongs().listIterator();
+
+        while (it.hasNext())
+        {
+            String name = it.next();
+            items.add(name);
+            listView.getItems().add(name);
+        }
 
     }
 }

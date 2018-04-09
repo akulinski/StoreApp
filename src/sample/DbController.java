@@ -1,15 +1,22 @@
 package sample;
 
 import java.sql.*;
+import java.util.LinkedList;
 import javax.sql.*;
 
 public class DbController {
     private Connection connection=null;
     private Statement statement=null;
 
+    public LinkedList<String> getTrackList() {
+        return TrackList;
+    }
+
+    private LinkedList<String> TrackList;
+
     DbController()
     {
-
+        TrackList=new LinkedList<String>();
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:chinook.db");
@@ -32,6 +39,7 @@ public class DbController {
             while (set.next())
             {
                 String  name = set.getString("Name");
+                this.TrackList.add(name);
                 System.out.println(name);
             }
         }

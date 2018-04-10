@@ -11,6 +11,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        //Main window
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
 
         DbController db=new DbController();

@@ -25,9 +25,9 @@ public class GUIController implements Initializable {
     @FXML
     private javafx.scene.control.TextField miliseconds;
 
-    private DbController dbcontroller=null;
+    private DbController dbcontroller;
 
-    public GUIController(DbController controller) {
+    GUIController(DbController controller) {
         this.dbcontroller = controller;
     }
 
@@ -38,8 +38,10 @@ public class GUIController implements Initializable {
 
     }
 
+    //Function that controlls getting all tracks
     public void PrintAllTRacks(ActionEvent actionEvent) {
-            dbcontroller.getTrackList().clear();;
+            //clear list in dbcontroller-> list with all titles
+            dbcontroller.getTrackList().clear();
             dbcontroller.printallTracks();
 
             ObservableList<String> items = listView.getItems();
@@ -56,10 +58,12 @@ public class GUIController implements Initializable {
 
     public void getSongs(ActionEvent actionEvent)
     {
+        //clear list in dbcontroller form prevous click
         dbcontroller.getSongs().clear();
         dbcontroller.getSongs(Integer.parseInt(miliseconds.getText()));
 
-       Login login=new Login(this);
+        //login box
+        Login login=new Login(this);
 
         ObservableList<String> items = listView.getItems();
 

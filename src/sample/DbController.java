@@ -12,28 +12,30 @@ import java.sql.*;
 import java.util.LinkedList;
 import javax.sql.*;
 
-public class DbController {
+class DbController {
     private Connection connection=null;
     private Statement statement=null;
 
-    public LinkedList<String> getTrackList() {
+    LinkedList<String> getTrackList() {
         return TrackList;
     }
 
-
+    //list of all tracks
     private LinkedList<String> TrackList;
 
-    public LinkedList<String> getSongs() {
+    LinkedList<String> getSongs() {
         return songs;
     }
 
+    //list of songs returned from query getSongs
     private LinkedList<String> songs;
 
 
     DbController()
     {
-        TrackList=new LinkedList<String>();
-        songs=new LinkedList<String>();
+
+        TrackList= new LinkedList<>();
+        songs= new LinkedList<>();
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:chinook.db");
@@ -68,6 +70,7 @@ public class DbController {
 
     }
 
+    //function that adds songs that match value
     public void getSongs(int value)
     {
 
@@ -76,11 +79,12 @@ public class DbController {
             String sql="SELECT * FROM tracks WHERE Milliseconds > ?";
             PreparedStatement statment=connection.prepareStatement(sql);
 
-            statment.setInt(1,value);;
+            statment.setInt(1,value);
             ResultSet resultSet=statment.executeQuery();
 
             while(resultSet.next())
             {
+                //column 2 is index
                 String name=resultSet.getString(2);
                 songs.add(name);
             }

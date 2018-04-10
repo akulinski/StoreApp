@@ -19,7 +19,7 @@ public class Main extends Application {
         loader.setController(controller);
         GridPane grid=loader.load();
         primaryStage.setTitle("Store");
-        primaryStage.setScene(new Scene(grid, 300, 275));
+        primaryStage.setScene(new Scene(grid, 1000, 1000));
         primaryStage.show();
     }
 

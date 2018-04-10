@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
@@ -35,13 +35,13 @@
          <children>
             <ListView prefHeight="200.0" prefWidth="200.0" />
             <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#PrintAllTRacks" prefHeight="51.0" prefWidth="178.0" text="Print All Tracks" />
-                  <Button fx:id="confirm" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#getSongs" prefHeight="52.0" prefWidth="64.0" text="Confirm" />
-                  <TextField fx:id="miliseconds" />
+                  <TextField fx:id="miliseconds" layoutX="331.0" layoutY="39.0" promptText="Enter miliseconds" />
+                  <Button fx:id="confirm" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="532.0" layoutY="26.0" mnemonicParsing="false" onAction="#getSongs" prefHeight="52.0" prefWidth="166.0" text="Confirm" />
+                  <Button contentDisplay="CENTER" layoutY="13.0" mnemonicParsing="false" onAction="#PrintAllTRacks" prefHeight="51.0" prefWidth="178.0" text="Print All Tracks" />
                </children>
-            </HBox>
+            </Pane>
          </children>
       </GridPane>
    </children>

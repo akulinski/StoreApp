@@ -35,37 +35,34 @@ public class GUIController implements Initializable {
     }
 
     public void PrintAllTRacks(ActionEvent actionEvent) {
-
+            dbcontroller.getTrackList().clear();;
             dbcontroller.printallTracks();
 
             ObservableList<String> items = listView.getItems();
 
-            items.removeAll();
+            items.clear();
 
             Iterator<String> it=dbcontroller.getTrackList().listIterator();
-
-            while(it.hasNext())
+        while(it.hasNext())
             {
                 String name=it.next();
-                items.add(name);
                 listView.getItems().add(name);
             }
     }
 
     public void getSongs(ActionEvent actionEvent)
     {
+        dbcontroller.getSongs().clear();
         dbcontroller.getSongs(Integer.parseInt(miliseconds.getText()));
 
         ObservableList<String> items = listView.getItems();
 
-        items.removeAll();
-
+        items.clear();
         Iterator<String> it=dbcontroller.getSongs().listIterator();
 
         while (it.hasNext())
         {
             String name = it.next();
-            items.add(name);
             listView.getItems().add(name);
         }
 

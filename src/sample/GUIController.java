@@ -5,6 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import javax.swing.text.html.ListView;
 import java.io.IOException;
@@ -55,6 +59,8 @@ public class GUIController implements Initializable {
         dbcontroller.getSongs().clear();
         dbcontroller.getSongs(Integer.parseInt(miliseconds.getText()));
 
+       Login login=new Login(this);
+
         ObservableList<String> items = listView.getItems();
 
         items.clear();
@@ -66,5 +72,9 @@ public class GUIController implements Initializable {
             listView.getItems().add(name);
         }
 
+    }
+    public void login(ActionEvent actionEvent)
+    {
+        actionEvent.consume();
     }
 }

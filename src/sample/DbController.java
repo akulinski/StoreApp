@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -70,21 +71,7 @@ public class DbController {
     public void getSongs(int value)
     {
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
-            Parent root = null;
-            root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setOpacity(1);
-            stage.setTitle("Login");
-            stage.setScene(new Scene(root, 450, 450));
-            stage.showAndWait();
-        }
-        catch (IOException e)
-            {
-                e.printStackTrace();
-            }
+
         try{
             String sql="SELECT * FROM tracks WHERE Milliseconds > ?";
             PreparedStatement statment=connection.prepareStatement(sql);
@@ -95,7 +82,6 @@ public class DbController {
             while(resultSet.next())
             {
                 String name=resultSet.getString(2);
-                System.out.println(name);
                 songs.add(name);
             }
         }

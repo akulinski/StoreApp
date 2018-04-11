@@ -32,15 +32,21 @@ public class Login{
         return flag;
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     private Stage primaryStage;
     boolean flag=false;
     private Stage loginStage;
+    private AccountsDb accountsDb;
     Login(Stage primaryStage)
     {
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(getClass().getResource("login.fxml"));
         loader.setController(this);
         loginStage = new Stage();
+        accountsDb=new AccountsDb();
         this.primaryStage=primaryStage;
         try {
             AnchorPane anchorPane=loader.load();
@@ -53,11 +59,15 @@ public class Login{
     }
 
 
-    public boolean login(ActionEvent actionEvent)
+    public void login(ActionEvent actionEvent)
     {
+
+        //if db controller returnes true hite login and show rest
+        if(accountsDb.login(this.login.getText(),this.password.getText()))
+        {
+            primaryStage.show();
             loginStage.hide();
-            this.flag=true;
-            this.primaryStage.show();
-            return true;
+        }
+
     }
 }

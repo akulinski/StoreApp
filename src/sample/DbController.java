@@ -52,7 +52,7 @@ class DbController {
         {
             statement=connection.createStatement();
             String sql="SELECT Name FROM tracks; ";
-
+            TrackList.clear();
             ResultSet set=statement.executeQuery(sql);
 
             while (set.next())
@@ -81,7 +81,7 @@ class DbController {
 
             statment.setInt(1,value);
             ResultSet resultSet=statment.executeQuery();
-
+            songs.clear();
             while(resultSet.next())
             {
                 //column 2 is index

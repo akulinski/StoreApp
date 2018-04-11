@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
+
 public class Main extends Application {
 
     @Override
@@ -22,13 +25,16 @@ public class Main extends Application {
         GridPane grid=loader.load();
         primaryStage.setTitle("Store");
         primaryStage.setScene(new Scene(grid, 1000, 1000));
-        primaryStage.show();
+        primaryStage.hide();
+        Login login=new Login(primaryStage);
+
+
     }
 
 
     public static void main(String[] args)
     {
-
         launch(args);
+
     }
 }

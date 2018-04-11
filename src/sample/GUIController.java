@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class GUIController implements Initializable {
+public class GUIController implements Initializable{
 
     @FXML
     private javafx.scene.control.ListView<String> listView;
@@ -26,6 +26,8 @@ public class GUIController implements Initializable {
     private javafx.scene.control.TextField miliseconds;
 
     private DbController dbcontroller;
+
+    Login login;
 
     GUIController(DbController controller) {
         this.dbcontroller = controller;
@@ -60,10 +62,11 @@ public class GUIController implements Initializable {
     {
         //clear list in dbcontroller form prevous click
         dbcontroller.getSongs().clear();
+        if(miliseconds.getText()==null)
+        {
+            throw new NullPointerException("empty textBox");
+        }
         dbcontroller.getSongs(Integer.parseInt(miliseconds.getText()));
-
-        //login box
-        Login login=new Login(this);
 
         ObservableList<String> items = listView.getItems();
 
@@ -77,8 +80,5 @@ public class GUIController implements Initializable {
         }
 
     }
-    public void login(ActionEvent actionEvent)
-    {
-        actionEvent.consume();
-    }
+
 }

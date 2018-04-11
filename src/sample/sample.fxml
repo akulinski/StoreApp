@@ -37,9 +37,9 @@
             <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" />
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="miliseconds" layoutX="331.0" layoutY="39.0" promptText="Enter miliseconds" />
-                  <Button fx:id="confirm" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="532.0" layoutY="26.0" mnemonicParsing="false" onAction="#getSongs" prefHeight="52.0" prefWidth="166.0" text="Confirm" />
-                  <Button contentDisplay="CENTER" layoutY="13.0" mnemonicParsing="false" onAction="#PrintAllTRacks" prefHeight="51.0" prefWidth="178.0" text="Print All Tracks" />
+                  <TextField fx:id="miliseconds" layoutX="650.0" layoutY="27.0" prefHeight="26.0" prefWidth="164.0" promptText="Enter miliseconds" />
+                  <Button fx:id="confirm" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="650.0" layoutY="53.0" mnemonicParsing="false" onAction="#getSongs" prefHeight="52.0" prefWidth="164.0" text="Confirm" />
+                  <Button contentDisplay="CENTER" layoutX="14.0" layoutY="53.0" mnemonicParsing="false" onAction="#PrintAllTRacks" prefHeight="51.0" prefWidth="178.0" text="Print All Tracks" />
                </children>
             </Pane>
          </children>
